@@ -1,6 +1,6 @@
-# COVID Crisis Communications Starter Kit
+# COVID Crisis Communications: Sherlock's Watson Assistant
 
-This solution starter was created by technologists from IBM.  Translations are available: [JP](/README_JP.md)
+This solution starter was created by technologists from IBM. It is further extended for this idea by Sanker Akella
 
 ## Authors
 
@@ -28,52 +28,34 @@ This solution starter was created by technologists from IBM.  Translations are a
 ## Overview
 
 ### What's the problem?
-In times of crisis, communications systems are often overwhelmed with people trying to find basic information about testing, symptoms, community response, and other resources. When communication lines get clogged, people who need real help can't get through. Chatbots help respond to tens, even hundreds, of thousands of messages a day.
+Government is providing information about pandemic but people are not able to get the full picture as the information is scattered at various places. As an example, many get confused if they could park their cars on the yellow line or not. Do they get fined for that or parking rules are lifted temporarily to facilitate the lockdown. 
+Secondly, there is too much information that people do get confused on what they could or could not do which is one of the causes of these many deaths or confirmed cases. Hence if they have a chat bot in hand which can help them answer their questions with accuracy, then there are high chances of people following the rules properly.
 
-### How can technology help ?
+### Solution Approach ?
 
-Whether via text, phone, websites, or communication apps, conversing with chatbots and other AI-enabled resources can play a critical role in helping communities quickly understand crucial information and free up customer service resources to focus on higher-level issues.
+Before the smartphones entered the market, emails and chats were done online using laptops where the person has to physically go to the laptop or desktop and send that mail or chat. Since the smartphone evolution, apps started to get developed and as a result everything could be done with a click of a button. This has resulted in more online communication than before just because of accessibility and comfort of not going anywhere just to complete a small task.
+I want to bring-in same concept. If my chatbot can do the hard work by searching all the information and provide accurate information to the user, then that’s a win-win situation. Hence multiple chats are assembled for this idea where the 1st chatbot is prepared on Node-Red for a user to type or speak out his question and in response the bot will output the result in text format as well as an audio output of the response. Along with that chat option, user can also check the latest statistics on Covid across various countries, graphical representation split at the level of counties.
+Second chat bot is a facebook messenger which has dialog and search skills along with function integration for better refined results. Third app is a Slack bot for professionals where they can subscribe for the government guidelines. Final chatbot is a webhook which can be hooked to any website with admin privileges. The final one is very critical as the government websites do not have chat option and if government agrees, then that will be a great benefit.
+In the roadmap I had watsapp, viber, Telegram and Twitter integration. Followed by push notification via twillio as we still have a good amount of people who doesn’t use smart phones (under 12s and over 60s). Finally, along with having the webhook on to government websites, a mobile app will be developed with all the features needed at the basic level and then that will be expanded to cater for advanced need of consumers.
 
-IBM Watson Assistant service helps you build, train, and deploy conversational interactions into any application, device, or channel. Creating a chatbot using Watson Assistant can help address the issues that our users face while trying to gather accurate, relevant information. Whether you're trying to learn the latest news about Covid-19 or learn where there's testing in your area, a chatbot can play a major role in helping communities quickly understand crucial information and free up customer service resources to focus on higher-level issues.
+## Roadmap
+COVID-19 has citizens looking for answers about symptoms and testing sites as well as current status of schools, transportation, and other public services. Using Watson Assistant a virtual assistant is designed to understand and respond to common questions about COVID-19, scan COVID-19 news articles using Watson Discovery and respond to COVID statistics inquires with data from trusted sources. This is also integrated into a Slack integration or via a Node-RED Dashboard.
 
-## Video
+![Crisis Comms Roadmap diagram](/images/Roadmap.JPG)
 
-[![Call for Code Solution Starter: Water sustainability in the context of climate change ](https://img.youtube.com/vi/WzEj_m0hwF0/0.jpg)](https://www.youtube.com/watch?v=WzEj_m0hwF0)
-
-## The idea
-
-COVID-19 has citizens looking for answers about symptoms and testing sites as well as current status of schools, transportation, and other public services. Using Watson Assistant, this Call for Code Starter Kit has designed a virtual assistant pre-loaded to understand and respond to common questions about COVID-19, scan COVID-19 news articles using Watson Discovery and respond to COVID statistics inquires with data from trusted sources.
-
-With this Watson Assistant powered Crisis Communications Starter Kit you can integrate a chatbot into your Call for Code solution in an IBM Cloud hosted web server, using a Slack integration or via a Node-RED Dashboard. 
-
-It can:
-- Respond by sharing consistent, accurate COVID-19 information
-- Help citizens quickly and easily access the latest information through their channel of choice – voice, text or collaborative tool
-- Free valuable resources by automating answers to common COVID-19 questions
-- Dynamically update information with the latest developments and recommendations
-
-The challenge for you is to build out from this framework to create a more complete solution.
+The Roadmap contains:
+•	The 1st phase (Informative Voice-enabled chatbot, slack channel, facebook messenger, webhook) is already ready to use.
+•	Phase 2 is to extend the usage on to watsapp, viber, telegram, twitter and introduce the push notification via sms service using Twillio.
+•	Phase 3 is to integrate my webhook on to government websites by seeking their approval.
+•	Phase 4 is to build a mobile app based chat bot which will have latest features based on the feedback we’ll receive from the users on the previous phases.
 
 ## How it works
 
+[![Sherlock's Watson Assistant](/images/Thumbnail.png)](https://www.youtube.com/watch?v=zoZbpbErK3I)
 
-## Diagrams
+## Architectural Diagrams
 
-### Website integration with COVID-19 crisis communication chatbot
-
-![Crisis Comms Architecture diagram](/images/Crisis-Comms-Architecture-Nodejs-WebServer.png)
-
-1. User visits a website with the COVID-19 chatbot and asks a question.
-2. Node.js web server calls the Watson Assistant service hosted in IBM Cloud.
-3. Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user question.
-4. Source COVID-19 FAQ information from trusted CDC data.
-5. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-6. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
-7. Watson Discovery scans news articles and responds with relevant articles.
-8. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-9. IBM Cloud Function calls the COVID-19 API to get statistics.
-10. Watson Assistant replies to the user inquiry.
-11. Node.js web server displays the chat answer to the user.
+![Crisis Comms Architectural Diagram](/images/Architectural_Diagram.jpg)
 
 ### Slack integration with COVID-19 crisis communication chatbot
 
@@ -81,15 +63,35 @@ The challenge for you is to build out from this framework to create a more compl
 
 1. User invokes a COVID-19 Slack integration chatbot app and asks a question.
 2. Slack app calls the Watson Assistant service hosted in IBM Cloud.
-3. Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user question.
-4. Source COVID-19 FAQ information from trusted CDC data
-5. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-6. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
-7. Watson Discovery scans news articles and responds with relevant articles.
-8. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-9. IBM Cloud Function calls the COVID-19 API to get statistics.
-10. Watson Assistant replies to the Slack application.
-11. Slack app displays the chat answer to the user.
+3. Watson Assistant uses Search skill to connect to the Discovery's Web claw into gov.uk website to look for an appropriate response.
+4. If the response has low confidence level, then Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user question.
+5. Source COVID-19 FAQ information from trusted CDC data
+6. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+7. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
+8. Watson Discovery scans news articles and responds with relevant articles.
+9. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+10. IBM Cloud Function calls the COVID-19 API to get statistics.
+11. Watson Assistant replies to the Slack application.
+12. Slack app displays the chat answer to the user.
+
+![Crisis Comms Slack Response](/images/Slack_Response.png)
+
+### Facebook messenger integration with COVID-19 crisis communication chatbot
+
+1. User invokes a COVID-19 Facebook messenger chatbot app and asks a question.
+2. Messenger calls the Watson Assistant service hosted in IBM Cloud.
+3. Watson Assistant uses Search skill to connect to the Discovery's Web claw into gov.uk website to look for an appropriate response.
+4. If the response has low confidence level, then Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user question.
+5. Source COVID-19 FAQ information from trusted CDC data
+6. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+7. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
+8. Watson Discovery scans news articles and responds with relevant articles.
+9. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+10. IBM Cloud Function calls the COVID-19 API to get statistics.
+11. Watson Assistant replies to the facebook messenger application.
+12. Messenger displays the chat answer to the user.
+
+![Crisis Comms Slack Response](/images/Thumbnail.png)
 
 ### Voice enabled COVID-19 crisis communication chatbot using Node-RED
 
@@ -99,17 +101,21 @@ The challenge for you is to build out from this framework to create a more compl
 2. Node-RED records the speech wav file and calls the Watson Speech to Text service hosted in IBM Cloud.
 3. Watson Speech to Text uses machine learning to decode the user's speech.
 4. Watson Speech to Text replies with a transcript of the COVID-19 question and Node-RED calls Watson Assistant service hosted in IBM Cloud.
-5. Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user's question.
-6. Source COVID-19 FAQ information from trusted CDC data
-7. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-8. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
-9. Watson Discovery scans news articles and responds with relevant articles.
-10. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
-11. IBM Cloud Function calls the COVID-19 API to get statistics.
-12. Watson Assistant replies to the user inquiry and Node-RED sends the text transcript to Watson Text to Speech.
-13. Watson Text to Speech encodes the message in the user's language.
-14. Node-RED plays the chat answer wav file to the user.
-15. User listens to the chat answer.
+5. Watson Assistant uses Search skill to connect to the Discovery's Web claw into gov.uk website to look for an appropriate response.
+6. Watson Assistant uses natural language understanding and machine learning to extract entities and intents of the user's question.
+7. Source COVID-19 FAQ information from trusted CDC data
+8. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+9. IBM Cloud Function calls the Watson Discovery service running in IBM Cloud.
+10. Watson Discovery scans news articles and responds with relevant articles.
+11. Watson Assistant invokes an OpenWhisk open source powered IBM Cloud Function.
+12. IBM Cloud Function calls the COVID-19 API to get statistics.
+13. Watson Assistant replies to the user inquiry and Node-RED sends the text transcript to Watson Text to Speech.
+14. Watson Text to Speech encodes the message in the user's language.
+15. Node-RED plays the chat answer wav file to the user.
+16. User listens to the chat answer.The user can also see the graph of latest covid statistics, actual figures split by countries and Covid tracker where you can see the graph of each county.
+
+![Crisis Comms Voice Chatbot](/images/Voice_Chatbot.png)
+![Crisis Comms Tracker](/images/Tracker.png)
 
 ## Documents
 
@@ -125,7 +131,6 @@ The challenge for you is to build out from this framework to create a more compl
 - [Node-RED Slack Integration](https://www.ibm.com/cloud/blog/create-a-chatbot-on-ibm-cloud-and-integrate-with-slack-part-1)
 - [Train a speech-to-text model](https://developer.ibm.com/patterns/customize-and-continuously-train-your-own-watson-speech-service/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
-- [IBM Cloud Voice Agent with Twilio](https://developer.ibm.com/recipes/tutorials/ibms-voice-agent-with-watson-and-twilio/)
 - [Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started)
 
 ## Datasets
@@ -144,7 +149,6 @@ The challenge for you is to build out from this framework to create a more compl
 
 ### Open source technology
 
-- [Node.js](https://nodejs.org/en/)
 - [Apache OpenWhisk](https://openwhisk.apache.org/)
 - [Node-RED](https://nodered.org/)
 
@@ -152,7 +156,8 @@ The challenge for you is to build out from this framework to create a more compl
 
 ### Prerequisite
 
-- Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account.
+- Log-in to IBM Cloud platform [IBM Cloud Platform](https://cloud.ibm.com/) with your own registered account.
+- The account has to be at least a Plus account to use Watson Assistant - Search skills.
 
 ### Set up an instance of Watson Assistant
 
@@ -220,12 +225,6 @@ When integrated, depending on the events that you configure the assistant to sup
 ### Integrate your COVID-19 chatbot with Node-RED
 
 Want to create a voice-enabled chatbot? This tutorial teaches you how to [create a voice enabled chatbot using Node-RED](./starter-kit/node-red/README.md) and the Watson Assistant, Watson Speech to Text, and Watson Text to Speech nodes.
-
-### Embed your COVID-19 chatbot on a Node.js website
-
-Finally, you can embed your COVID-19 crisis communication chatbot on a Node.js website.
-
-- Follow the [COVID-Simple installation instructions](./starter-kit/covid-simple/README.md)
 
 ## Disclosures
 
